@@ -1,0 +1,1 @@
+exec mix run --no-halt --eval Rockside.run_sanity
