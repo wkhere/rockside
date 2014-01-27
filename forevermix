@@ -1,0 +1,6 @@
+#!/bin/sh
+export TIMEFORMAT='%2U user %2S system %P%% cpu %R total' # bash/zsh same fmt
+while true; do 
+    echo -n "Run mix on `date +%H:%M:%S`.. "; $SHELL -c 'time mix compile'
+    inotifywait -q -e modify lib/*.ex *.exs
+done
