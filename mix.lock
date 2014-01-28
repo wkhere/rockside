@@ -1,4 +1,6 @@
 [ "cowboy": {:git, "git://github.com/extend/cowboy.git", "b09f3a570d702be7a55c36e5f5b4b63b26198637", []},
   "cowlib": {:git, "git://github.com/extend/cowlib.git", "63298e8e160031a70efff86a1acde7e7db1fcda6", [ref: "0.4.0"]},
+  "exreloader": {:git, "git://github.com/herenowcoder/exreloader.git", "8884cea916f4455116be6b5274eb52c664b42770", []},
+  "genx": {:git, "git://github.com/yrashk/genx.git", "1b857fa422a47269d5f151ecababd83f4835527d", []},
   "plug": {:git, "git://github.com/elixir-lang/plug.git", "ad6b35cdb42bfd38492e2387fc6aab5d2efa5c8c", [tag: "v0.2.0"]},
   "ranch": {:git, "git://github.com/extend/ranch.git", "5df1f222f94e08abdcab7084f5e13027143cc222", [ref: "0.9.0"]} ]
