@@ -9,4 +9,8 @@ defmodule RocksideTest do
   test "nested tags" do
     assert (( finish html [body] ) =~ "<html><body></body></html>")
   end
+
+  test "html has doctype" do
+    assert (( finish html [] ) =~ "<!DOCTYPE html>")
+  end
 end

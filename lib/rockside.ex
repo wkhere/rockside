@@ -13,7 +13,11 @@ defmodule Rockside.Doc do
   def finish(chunks), do: chunks |> List.flatten |> Enum.join
   # ^^ would be cool if Plug/Cowboy accepted just an iolist
 
-  %w[html head body]
+  def html(inner) do
+    ["<!DOCTYPE html><html>", inner, "</html>"]
+  end
+
+  %w[head body]
     |> Enum.each fn (name) ->
       sym = :"#{name}"
       def unquote(sym)(inner//[]), do: tag(unquote(sym), inner)
