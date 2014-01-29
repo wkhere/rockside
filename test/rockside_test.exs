@@ -3,30 +3,30 @@ defmodule RocksideTest do
   import Rockside.Doc
 
   test "content nested between tags" do
-      assert (( finish body "foo" ) == "<body>foo</body>")
+    assert body("foo") |> finish  == "<body>foo</body>"
   end
 
   test "nested tags" do
-    assert (( finish html [body] ) =~ "<html><body></body></html>")
+    assert html(body) |> finish =~ "<html><body></body></html>"
   end
 
   test "html has doctype" do
-    assert (( finish html [] ) =~ "<!DOCTYPE html>")
+    assert html([]) |> finish =~ "<!DOCTYPE html>"
   end
 
   test "tag attributes" do
-    assert (( finish tag(:foo, [class: "bar"], nil) ) ==
-      %s[<foo class="bar"></foo>])
+    assert tag(:foo, [class: "bar"], nil) |> finish ==
+      %s[<foo class="bar"></foo>]
   end
 
   test "tag attributes plus content" do
-    assert (( finish tag(:foo, [class: "bar"], "quux") ) ==
-      %s[<foo class="bar">quux</foo>])
+    assert tag(:foo, [class: "bar"], "quux") |> finish ==
+      %s[<foo class="bar">quux</foo>]
   end
 
   test "html tag attributes" do
-    assert (( finish html [foo: "bar"], nil ) =~
-      %s[<html foo="bar"></html>])
+    assert html([foo: "bar"], nil) |> finish =~
+      %s[<html foo="bar"></html>]
   end
 
 end

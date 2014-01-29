@@ -62,7 +62,7 @@ defmodule Rockside.Sanity do
         meta([http_equiv: "Content-Type", content: "text/html"]),
         title "foo"
       ]),
-      body "foo"
+      body("foo")
     ]
     conn = conn
       |> put_resp_content_type("text/html")
