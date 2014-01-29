@@ -13,4 +13,20 @@ defmodule RocksideTest do
   test "html has doctype" do
     assert (( finish html [] ) =~ "<!DOCTYPE html>")
   end
+
+  test "tag attributes" do
+    assert (( finish tag(:foo, [class: "bar"], nil) ) ==
+      %s[<foo class="bar"></foo>])
+  end
+
+  test "tag attributes plus content" do
+    assert (( finish tag(:foo, [class: "bar"], "quux") ) ==
+      %s[<foo class="bar">quux</foo>])
+  end
+
+  test "html tag attributes" do
+    assert (( finish html [foo: "bar"], nil ) =~
+      %s[<html foo="bar"></html>])
+  end
+
 end
