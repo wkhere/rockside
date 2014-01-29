@@ -12,7 +12,11 @@ defmodule Rockside.Doc do
 
   def finish(chunks), do: chunks |> List.flatten |> Enum.join
 
-  def html(inner), do: tag(:html, inner)
+  %w[html head body]
+    |> Enum.each fn (name) ->
+    sym = :"#{name}"
+    def unquote(sym)(inner//[]), do: tag(unquote(sym), inner)
+  end
 end
 
 defmodule Rockside.Sanity do
@@ -21,8 +25,8 @@ defmodule Rockside.Sanity do
 
   def call(conn, []) do
     doc = html [
-      tag(:head),
-      tag(:body, "foo")
+      head,
+      body "foo"
     ]
     conn = conn
       |> put_resp_content_type("text/html")
