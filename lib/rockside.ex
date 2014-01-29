@@ -14,9 +14,9 @@ defmodule Rockside.Doc do
 
   %w[html head body]
     |> Enum.each fn (name) ->
-    sym = :"#{name}"
-    def unquote(sym)(inner//[]), do: tag(unquote(sym), inner)
-  end
+      sym = :"#{name}"
+      def unquote(sym)(inner//[]), do: tag(unquote(sym), inner)
+    end
 end
 
 defmodule Rockside.Sanity do
