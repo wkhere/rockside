@@ -11,6 +11,7 @@ defmodule Rockside.Doc do
   end
 
   def finish(chunks), do: chunks |> List.flatten |> Enum.join
+  # ^^ would be cool if Plug/Cowboy accepted just an iolist
 
   %w[html head body]
     |> Enum.each fn (name) ->
