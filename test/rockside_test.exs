@@ -1,7 +1,12 @@
 defmodule RocksideTest do
   use ExUnit.Case
+  import Rockside.Doc
 
-  test "the truth" do
-    assert(true)
+  test "content nested between tags" do
+      assert (( finish body "foo" ) == "<body>foo</body>")
+  end
+
+  test "nested tags" do
+    assert (( finish html [body] ) =~ "<html><body></body></html>")
   end
 end
