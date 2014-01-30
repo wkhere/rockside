@@ -60,7 +60,7 @@ defmodule Rockside.Sanity do
     doc = html [
       head([
         meta([http_equiv: "Content-Type", content: "text/html"]),
-        title "foo"
+        title("foo"),
       ]),
       body("foo")
     ]
