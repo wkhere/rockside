@@ -32,19 +32,19 @@ defmodule Rockside.Doc do
   end
 
   %w[head title body]
-    |> Enum.each fn (name) ->
+    |> Enum.each fn name ->
       sym = :"#{name}"
       def unquote(sym)(attrs//[], inner), do: tag(unquote(sym), attrs, inner)
       def unquote(sym)(), do: tag(unquote(sym))
     end
   %w[meta]
-    |> Enum.each fn (name) ->
+    |> Enum.each fn name ->
       sym = :"#{name}"
       def unquote(sym)(attrs//[]), do: tag1(unquote(sym), attrs)
     end
 
   defp htmlize_attrs(attrs) do
-    Enum.map(attrs, fn({k,v}) ->
+    Enum.map(attrs, fn {k,v} ->
       k = k |> to_string |> String.replace("_", "-")
       %s/#{k}="#{v}"/
     end)
