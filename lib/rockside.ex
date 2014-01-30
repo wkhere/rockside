@@ -24,7 +24,7 @@ defmodule Rockside.Doc do
     end
   end
 
-  def finish(chunks), do: chunks |> List.flatten |> Enum.join
+  def flush(chunks), do: chunks |> List.flatten |> Enum.join
   # not needed besides tests cause patched Plug accepts iolist as a resp body
 
   def html(attrs//[], inner) do
