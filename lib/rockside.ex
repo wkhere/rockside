@@ -25,7 +25,7 @@ defmodule Rockside.Doc do
   end
 
   def finish(chunks), do: chunks |> List.flatten |> Enum.join
-  # ^^ would be cool if Plug/Cowboy accepted just an iolist
+  # not needed besides tests cause patched Plug accepts iolist as a resp body
 
   def html(attrs//[], inner) do
     [ "<!DOCTYPE html>" | tag(:html, attrs, inner) ]
@@ -66,7 +66,7 @@ defmodule Rockside.Sanity do
     ]
     conn = conn
       |> put_resp_content_type("text/html")
-      |> send_resp(200, finish doc)
+      |> send_resp(200, doc)
     {:ok, conn}
   end
 end

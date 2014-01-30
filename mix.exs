@@ -22,7 +22,7 @@ defmodule Rockside.Mixfile do
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   defp deps(:prod) do
     [ {:cowboy, github: "extend/cowboy"},
-      {:plug, "== 0.2.0", github: "elixir-lang/plug", tag: "v0.2.0"},
+      {:plug, "== 0.2.0", github: "herenowcoder/plug"},
     ]
   end
 
