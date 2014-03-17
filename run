@@ -1,1 +1,1 @@
-exec mix run --no-halt --eval Rockside.run_sanity
+exec elixir --sname rockside -S mix run --no-halt --eval Rockside.run_sanity
