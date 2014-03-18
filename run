@@ -1,1 +1,2 @@
-exec elixir --sname rockside -S mix run --no-halt --eval Rockside.run_sanity
+n=$1; [ -z "$n" ] && n=rockside
+exec elixir --sname $n -S mix run --no-halt --eval Rockside.run_sanity
