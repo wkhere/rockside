@@ -4,7 +4,7 @@ defmodule Rockside.Mixfile do
   def project do
     [ app: :rockside,
       version: "0.0.1",
-      elixir: "~> 0.12.2",
+      elixir: "~> 0.12.4",
       deps: deps Mix.env ]
   end
 

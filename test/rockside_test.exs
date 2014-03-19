@@ -16,17 +16,17 @@ defmodule RocksideTest do
 
   test "tag attributes" do
     assert tag(:foo, [class: "bar"], nil) |> flush ==
-      %s[<foo class="bar"></foo>]
+      ~s[<foo class="bar"></foo>]
   end
 
   test "tag attributes plus content" do
     assert tag(:foo, [class: "bar"], "quux") |> flush ==
-      %s[<foo class="bar">quux</foo>]
+      ~s[<foo class="bar">quux</foo>]
   end
 
   test "html tag attributes" do
     assert html([foo: "bar"], nil) |> flush =~
-      %s[<html foo="bar"></html>]
+      ~s[<html foo="bar"></html>]
   end
 
 end
