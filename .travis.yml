@@ -1,0 +1,15 @@
+language: erlang
+otp_release:
+  - 17.0
+before_install:
+  - mkdir -p vendor/elixir
+  - wget -q https://github.com/elixir-lang/elixir/releases/download/v0.13.2/Precompiled.zip && unzip -qq Precompiled.zip -d vendor/elixir
+  - export PATH="$PATH:$PWD/vendor/elixir/bin"
+  - export MIX_ENV=test
+before_script:
+    - mix local.install http://s3.hex.pm/installs/hex.ez --force
+    - mix deps.get
+script: 
+    - mix test
+after_success:
+  - mix coveralls.travis
