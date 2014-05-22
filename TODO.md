@@ -1,0 +1,14 @@
+- [x] Upgrade to 0.13.x
+- [x] travis |> coveralls
+- [ ] Test with Plug.Test
+- [ ] More coverage for tag/tag1 stuff
+- [ ] Split sources
+- [ ] Clean up forever / reloader
+  - [ ] make forever optionally silent
+  - [ ] upgrade my reloader fork, or
+  - [ ] rethink reloader stuff
+- [ ] Start making useful elements
+  - [ ] minimal jquery example
+  - [ ] then think of syntax
+  - [ ] then think of macro-ization
+  - [ ] ...
