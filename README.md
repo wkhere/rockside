@@ -1,6 +1,6 @@
 # Rockside
-[![Build Status](https://travis-ci.org/herenowcoder/rockside.png)](https://travis-ci.org/herenowcoder/rockside)
-[![Coverage Status](https://coveralls.io/repos/herenowcoder/rockside/badge.png?branch=master)](https://coveralls.io/r/herenowcoder/rockside?branch=master)
+[![Build Status](https://travis-ci.org/herenowcoder/rockside.svg?branch=master)](https://travis-ci.org/herenowcoder/rockside)
+[![Coverage Status](https://img.shields.io/coveralls/herenowcoder/rockside.svg)](https://coveralls.io/r/herenowcoder/rockside?branch=master)
 
 This *will* be a controlerless web server architecture for [Elixir][1], 
 made esp. for single-page web apps, with some ideas inspired by /
