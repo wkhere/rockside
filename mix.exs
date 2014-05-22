@@ -3,15 +3,15 @@ defmodule Rockside.Mixfile do
 
   def project do
     [ app: :rockside,
-      version: "0.0.1",
-      elixir: "~> 0.12.4",
+      version: "0.0.2",
+      elixir: "~> 0.13.2",
       deps: deps Mix.env ]
   end
 
   # Configuration for the OTP application
   def application do
     dep_apps = [:cowboy, :plug]
-    if Mix.env == :dev, do: dep_apps = [:exreloader | dep_apps]
+    #if Mix.env == :dev, do: dep_apps = [:exreloader | dep_apps]
     [ applications: dep_apps ]
   end
 
@@ -22,14 +22,15 @@ defmodule Rockside.Mixfile do
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   defp deps(:prod) do
     [ {:cowboy, github: "extend/cowboy"},
-      {:plug, "== 0.2.0", github: "herenowcoder/plug"},
+      {:plug, "== 0.4.3", github: "elixir-lang/plug", tag: "v0.4.3"},
     ]
   end
 
-  defp deps(:dev) do
-    [ {:exreloader, github: "herenowcoder/exreloader"}
-      | deps :prod ]
-  end
+  # my reloader has deps not working in 0.13
+  #defp deps(:dev) do
+  #  [ {:exreloader, github: "herenowcoder/exreloader"}
+  #    | deps :prod ]
+  #end
 
   defp deps(_), do: deps :prod
 end

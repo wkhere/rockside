@@ -53,8 +53,10 @@ defmodule Rockside.Doc do
 end
 
 defmodule Rockside.Sanity do
-  import Plug.Connection
+  import Plug.Conn
   import Rockside.Doc
+
+  def init(opts), do: opts
 
   def call(conn, []) do
     doc = html [
@@ -67,7 +69,7 @@ defmodule Rockside.Sanity do
     conn = conn
       |> put_resp_content_type("text/html")
       |> send_resp(200, doc)
-    {:ok, conn}
+    conn
   end
 end
 
