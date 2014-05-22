@@ -24,7 +24,10 @@ defmodule Rockside.Doc do
     end
   end
 
-  def flush(chunks), do: chunks |> List.flatten |> Enum.join
+  def flush(chunks) when is_list(chunks) do
+    chunks |> List.flatten |> Enum.join
+  end
+  def flush(chunk) when is_binary(chunk), do: chunk
   # not needed besides tests cause patched Plug accepts iolist as a resp body
 
   def html(attrs\\[], inner) do

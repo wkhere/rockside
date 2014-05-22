@@ -1,7 +1,7 @@
 - [x] Upgrade to 0.13.x
 - [x] travis |> coveralls
 - [x] Test with Plug.Test
-- [ ] More coverage for tag/tag1 stuff
+- [x] More coverage for tag/tag1 stuff
 - [ ] Split sources
 - [ ] Clean up forever / reloader
   - [ ] make forever optionally silent

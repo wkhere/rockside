@@ -14,15 +14,25 @@ defmodule Rockside.Doc.Test do
     assert html([]) |> flush =~ "<!DOCTYPE html>"
   end
 
-  test "tag attributes" do
+  test "generic tag attributes" do
     assert tag(:foo, [class: "bar"], nil) |> flush ==
       ~s[<foo class="bar"></foo>]
   end
 
-  test "tag attributes plus content" do
+  test "generic tag attributes plus content" do
     assert tag(:foo, [class: "bar"], "quux") |> flush ==
       ~s[<foo class="bar">quux</foo>]
   end
+
+  test "generic tag1 without attributes" do
+    assert tag1(:foo) |> flush == ~s[<foo />]
+  end
+
+  test "generic tag1 with attributes" do
+    assert tag1(:foo, [class: "bar"]) |> flush == ~s[<foo class="bar" />]
+  end
+
+  test "meta tag", do: assert meta([]) |> flush == ~s[<meta />]
 
   test "html tag attributes" do
     assert html([foo: "bar"], nil) |> flush =~
