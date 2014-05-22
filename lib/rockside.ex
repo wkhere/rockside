@@ -28,7 +28,8 @@ defmodule Rockside.Doc do
     chunks |> List.flatten |> Enum.join
   end
   def flush(chunk) when is_binary(chunk), do: chunk
-  # not needed besides tests cause patched Plug accepts iolist as a resp body
+  # ^ needed only for plug-free tests, because patched Plug
+  # accepts iolist as a resp body
 
   def html(attrs\\[], inner) do
     [ "<!DOCTYPE html>" | tag(:html, attrs, inner) ]
