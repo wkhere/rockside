@@ -1,4 +1,4 @@
-defmodule RocksideTest do
+defmodule Rockside.Doc.Test do
   use ExUnit.Case
   import Rockside.Doc
 
@@ -28,5 +28,22 @@ defmodule RocksideTest do
     assert html([foo: "bar"], nil) |> flush =~
       ~s[<html foo="bar"></html>]
   end
-
 end
+
+defmodule Rockside.Plug.Sanity.Test do
+  use ExUnit.Case
+  use Plug.Test
+  import Rockside.Sanity
+  @opts init([])
+
+  test "sanity response" do
+    conn = conn(:get, "/") |> call @opts
+    assert conn.state == :sent
+    assert conn.status == 200
+    [type] = conn |> get_resp_header("content-type")
+    assert type == "text/html; charset=utf-8"
+    assert conn.resp_body == 
+      ~s[<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html" /><title>foo</title></head><body>foo</body></html>]
+  end
+end
+
