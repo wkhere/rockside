@@ -5,7 +5,9 @@ defmodule Rockside.Mixfile do
     [ app: :rockside,
       version: "0.0.2",
       elixir: "~> 0.13.2",
-      deps: deps Mix.env ]
+      deps: deps(Mix.env),
+      test_coverage: [tool: ExCoveralls]
+    ]
   end
 
   # Configuration for the OTP application
@@ -24,6 +26,10 @@ defmodule Rockside.Mixfile do
     [ {:cowboy, github: "extend/cowboy"},
       {:plug, "== 0.4.3", github: "elixir-lang/plug", tag: "v0.4.3"},
     ]
+  end
+
+  defp deps(:test) do
+    [{:excoveralls, github: "parroty/excoveralls"} | deps :prod]
   end
 
   # my reloader has deps not working in 0.13
