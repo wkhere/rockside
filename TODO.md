@@ -2,7 +2,7 @@
 - [x] travis |> coveralls
 - [x] Test with Plug.Test
 - [x] More coverage for tag/tag1 stuff
-- [ ] Split sources
+- [x] Split sources
 - [ ] Clean up forever / reloader
   - [ ] make forever optionally silent
   - [ ] upgrade my reloader fork, or
