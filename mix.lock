@@ -1,6 +1,6 @@
 %{"cowboy": {:git, "git://github.com/extend/cowboy.git", "1ad3aae4d5459ee991805d16a3837e1da2ba96ff", []},
   "cowlib": {:git, "git://github.com/extend/cowlib.git", "f58340a0044856bb508df03cfe94cf79308380a2", [ref: "0.6.1"]},
-  "excoveralls": {:git, "git://github.com/parroty/excoveralls.git", "a14851ce8a232768dcf99b510c818ff35b056396", [tag: "v0.2.1"]},
+  "excoveralls": {:git, "git://github.com/parroty/excoveralls.git", "e594fcf5fc380d561b5573490852b7b4d0e5526a", []},
   "exprintf": {:package, "0.1.0"},
   "exreloader": {:git, "git://github.com/herenowcoder/exreloader.git", "02e215628da172e4ae7a43d016579794322505d7", []},
   "genx": {:git, "git://github.com/herenowcoder/genx.git", "74aab0c704af5e2664cf55086a5bffb933711a3e", []},

@@ -4,7 +4,7 @@ defmodule Rockside.Mixfile do
   def project do
     [ app: :rockside,
       version: "0.0.2",
-      elixir: "~> 0.13.2",
+      elixir: "~> 0.13.3",
       deps: deps(Mix.env),
       test_coverage: [tool: ExCoveralls]
     ]
@@ -29,7 +29,7 @@ defmodule Rockside.Mixfile do
   end
 
   defp deps(:test) do
-    [{:excoveralls, "== 0.2.1", github: "parroty/excoveralls", tag: "v0.2.1"}
+    [{:excoveralls, "~> 0.2.2", github: "parroty/excoveralls"}
      | deps :prod]
   end
 
