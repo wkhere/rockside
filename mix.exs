@@ -29,7 +29,8 @@ defmodule Rockside.Mixfile do
   end
 
   defp deps(:test) do
-    [{:excoveralls, github: "parroty/excoveralls"} | deps :prod]
+    [{:excoveralls, "== 0.2.1", github: "parroty/excoveralls", tag: "v0.2.1"}
+     | deps :prod]
   end
 
   # my reloader has deps not working in 0.13
