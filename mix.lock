@@ -6,5 +6,5 @@
   "genx": {:git, "git://github.com/herenowcoder/genx.git", "74aab0c704af5e2664cf55086a5bffb933711a3e", []},
   "jsex": {:package, "2.0.0"},
   "jsx": {:package, "2.0.4"},
-  "plug": {:git, "git://github.com/elixir-lang/plug.git", "951282035aa15ee58137ae2feca642e444324582", [tag: "v0.4.4"]},
+  "plug": {:git, "git://github.com/elixir-lang/plug.git", "d5737b543ffa48b40dcb7422ef31a03b62b82aee", [tag: "v0.5.1"]},
   "ranch": {:git, "git://github.com/extend/ranch.git", "3189ef2d47843945efc96c224963380462c33d40", [ref: "0.10.0"]}}
