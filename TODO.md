@@ -1,14 +1,18 @@
 - [x] Upgrade to 0.13.x
+- [x] Upgrade to 0.14.x
 - [x] travis |> coveralls
 - [x] Test with Plug.Test
 - [x] More coverage for tag/tag1 stuff
 - [x] Split sources
+- [ ] Add types
 - [ ] Clean up forever / reloader
   - [ ] make forever optionally silent
   - [ ] upgrade my reloader fork, or
   - [ ] rethink reloader stuff
 - [ ] Start making useful elements
+  - [ ] More tags
   - [ ] minimal jquery example
+    - [ ] serve css & jquery files
   - [ ] then think of syntax
   - [ ] then think of macro-ization
   - [ ] ...
