@@ -4,7 +4,8 @@
 - [x] Test with Plug.Test
 - [x] More coverage for tag/tag1 stuff
 - [x] Split sources
-- [ ] Add types
+- [x] Add types
+  - [ ] More strict Doc types
 - [ ] Clean up forever / reloader
   - [ ] make forever optionally silent
   - [ ] upgrade my reloader fork, or
