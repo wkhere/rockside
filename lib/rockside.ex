@@ -1,5 +1,5 @@
 defmodule Rockside do
-  def run_sanity() do
-    Plug.Adapters.Cowboy.http Rockside.Sanity, []
+  def run(module) do
+    Plug.Adapters.Cowboy.http(module, [])
   end
 end

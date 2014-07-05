@@ -1,2 +1,3 @@
 n=$1; [ -z "$n" ] && n=rockside
-exec elixir --sname $n -S mix run --no-halt --eval Rockside.run_sanity
+exec elixir --sname $n -S mix run --no-halt --eval \
+    'Rockside.run(Rockside.Sanity)'
