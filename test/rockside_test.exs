@@ -15,6 +15,10 @@ defmodule Rockside.Doc.Test do
     assert html([]) |> flush =~ "<!DOCTYPE html>"
   end
 
+  test "generic tag without attributes or content" do
+    assert tag(:foo) |> flush == ~s[<foo></foo>]
+  end
+
   test "generic tag without attributes" do
     assert tag(:foo, "content") |> flush == ~s[<foo>content</foo>]
   end
@@ -42,9 +46,13 @@ defmodule Rockside.Doc.Test do
       ~s[<html foo="bar"></html>]
   end
 
-  test "meta tag", do: assert meta([]) |> flush == ~s[<meta />]
+  test "meta tag" do
+    assert meta()   |> flush == "<meta />"
+    assert meta([]) |> flush == "<meta />"
+  end
 
   test "link tag" do
+    assert link()   |> flush == "<link />"
     assert link([]) |> flush == "<link />"
     assert link([foo: "bar"]) |> flush == ~s[<link foo="bar" />]
   end
@@ -54,7 +62,13 @@ defmodule Rockside.Doc.Test do
       ~s[<link rel="stylesheet" type="text/css" href="/a/w/e/some.css" />]
   end
 
+  test "title tag" do
+    assert title() |> flush == "<title></title>"
+    assert title("foo") |> flush == "<title>foo</title>"
+  end
+
   test "div tag" do
+    assert div()    |> flush == "<div></div>"
     assert div(nil) |> flush == "<div></div>"
     assert div("")  |> flush == "<div></div>"
     assert div([])  |> flush == "<div></div>"
