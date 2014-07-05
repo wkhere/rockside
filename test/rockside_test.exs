@@ -1,5 +1,6 @@
 defmodule Rockside.Doc.Test do
   use ExUnit.Case
+  import Kernel, except: [div: 2]
   import Rockside.Doc
 
   test "content nested between tags" do
@@ -51,6 +52,23 @@ defmodule Rockside.Doc.Test do
   test "css fun" do
     assert css("/a/w/e/some.css") |> flush ==
       ~s[<link rel="stylesheet" type="text/css" href="/a/w/e/some.css" />]
+  end
+
+  test "div tag" do
+    assert div(nil) |> flush == "<div></div>"
+    assert div("")  |> flush == "<div></div>"
+    assert div([])  |> flush == "<div></div>"
+    assert div("heyy") |> flush == "<div>heyy</div>"
+    assert div([class: "foo"], "bar") |> flush ==
+      ~s[<div class="foo">bar</div>]
+
+    assert(
+      div([class: "foo"], [
+        "something",
+        div([class: "other"],
+          "otherthing")
+      ]) |> flush ==
+      ~s[<div class="foo">something<div class="other">otherthing</div></div>])
   end
 
 end

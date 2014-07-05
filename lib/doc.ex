@@ -41,7 +41,7 @@ defmodule Rockside.Doc do
     [ "<!DOCTYPE html>" | tag(:html, attrs, inner) ]
   end
 
-  ~w[head title body]
+  ~w[head title body div]
     |> Enum.each fn name ->
       sym = :"#{name}"
       @spec unquote(sym)(attrs, content) :: outlist
