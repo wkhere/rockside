@@ -4,6 +4,7 @@ defmodule Rockside.Doc do
   @type attrs :: [{atom, String.t}]
   @type content :: String.t | list
   @type outlist  :: [any(), ...]
+  @type out_tag1 :: [[String.t] | String.t] | String.t
 
   @spec tag(tagname, attrs, content)  :: outlist
   @spec tag(tagname)                  :: outlist
@@ -18,7 +19,7 @@ defmodule Rockside.Doc do
 
   def tag(tag), do: tag(tag, [], [])
 
-  @spec tag1(tagname, attrs) :: outlist | String.t
+  @spec tag1(tagname, attrs) :: out_tag1
   def tag1(tag, attrs\\[]) do
     if attrs == [] do
       "<#{tag} />"
@@ -51,7 +52,7 @@ defmodule Rockside.Doc do
   ~w[meta link]
     |> Enum.each fn name ->
       sym = :"#{name}"
-      @spec unquote(sym)(attrs) :: outlist | String.t
+      @spec unquote(sym)(attrs) :: out_tag1
       def unquote(sym)(attrs\\[]), do: tag1(unquote(sym), attrs)
     end
 
