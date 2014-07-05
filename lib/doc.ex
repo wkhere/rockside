@@ -2,13 +2,13 @@ defmodule Rockside.Doc do
   import Kernel, except: [div: 2]
 
   @type tagname  :: atom
-  @type attrs :: [{atom, String.t}]
-  @type content :: String.t | list
-  @type outlist  :: [any(), ...]
-  @type out_tag1 :: [[String.t] | String.t]
+  @type attrs    :: [{atom, String.t}]
+  @type content  :: String.t | out_tag | [String.t | out_tag]
+  @type out_tag1 :: [String.t | [String.t]]
+  @type out_tag  :: [String.t | [String.t] | content]
 
-  @spec tag(tagname, attrs, content)  :: outlist
-  @spec tag(tagname)                  :: outlist
+  @spec tag(tagname, attrs, content)  :: out_tag
+  @spec tag(tagname)                  :: out_tag
 
   def tag(tag, attrs\\[], inner)
 
@@ -34,7 +34,7 @@ defmodule Rockside.Doc do
   end
 
 
-  @spec flush(outlist) :: String.t
+  @spec flush(out_tag) :: String.t
 
   def flush(chunks) when is_list(chunks) do
     chunks |> List.flatten |> Enum.join
@@ -43,7 +43,7 @@ defmodule Rockside.Doc do
   # accepts iolist as a resp body
 
 
-  @spec html(attrs, list) :: outlist
+  @spec html(attrs, list) :: out_tag
 
   def html(attrs\\[], inner) do
     [ "<!DOCTYPE html>" | tag(:html, attrs, inner) ]
@@ -53,8 +53,8 @@ defmodule Rockside.Doc do
   ~w[head title body div]
     |> Enum.each fn name ->
       sym = :"#{name}"
-      @spec unquote(sym)(attrs, content) :: outlist
-      @spec unquote(sym)() :: outlist
+      @spec unquote(sym)(attrs, content) :: out_tag
+      @spec unquote(sym)() :: out_tag
       def unquote(sym)(attrs\\[], inner), do: tag(unquote(sym), attrs, inner)
       def unquote(sym)(), do: tag(unquote(sym))
     end
@@ -72,7 +72,7 @@ defmodule Rockside.Doc do
   def css(path), do: link([rel: "stylesheet", type: "text/css", href: path])
 
 
-  @spec grid(list, content) :: outlist
+  @spec grid(list, content) :: out_tag
 
   def grid(args, body) when is_list(args) do
     args = args |> Enum.map(fn

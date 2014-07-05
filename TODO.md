@@ -5,7 +5,7 @@
 - [x] More coverage for tag/tag1 stuff
 - [x] Split sources
 - [x] Add types
-  - [ ] More strict Doc types
+  - [x] More strict Doc types
 - [ ] Clean up forever / reloader
   - [ ] make forever optionally silent
   - [ ] upgrade my reloader fork, or
