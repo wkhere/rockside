@@ -48,7 +48,7 @@ defmodule Rockside.Doc do
       def unquote(sym)(attrs\\[], inner), do: tag(unquote(sym), attrs, inner)
       def unquote(sym)(), do: tag(unquote(sym))
     end
-  ~w[meta]
+  ~w[meta link]
     |> Enum.each fn name ->
       sym = :"#{name}"
       @spec unquote(sym)(attrs) :: outlist | String.t

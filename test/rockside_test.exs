@@ -36,12 +36,18 @@ defmodule Rockside.Doc.Test do
     assert tag1(:foo, [class: "bar"]) |> flush == ~s[<foo class="bar" />]
   end
 
-  test "meta tag", do: assert meta([]) |> flush == ~s[<meta />]
-
   test "html tag attributes" do
     assert html([foo: "bar"], nil) |> flush =~
       ~s[<html foo="bar"></html>]
   end
+
+  test "meta tag", do: assert meta([]) |> flush == ~s[<meta />]
+
+  test "link tag" do
+    assert link([]) |> flush == "<link />"
+    assert link([foo: "bar"]) |> flush == ~s[<link foo="bar" />]
+  end
+
 end
 
 defmodule Rockside.Plug.Sanity.Test do
