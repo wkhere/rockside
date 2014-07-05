@@ -55,7 +55,7 @@ defmodule Rockside.Doc do
   end
 
 
-  ~w[head title body div]
+  ~w[head title body div span p a]
     |> Enum.each fn name ->
       sym = :"#{name}"
       @spec unquote(sym)(attrs, content) :: out_tag
@@ -64,7 +64,7 @@ defmodule Rockside.Doc do
       def unquote(sym)(), do: tag(unquote(sym))
     end
 
-  ~w[meta link]
+  ~w[meta link br img]
     |> Enum.each fn name ->
       sym = :"#{name}"
       @spec unquote(sym)(attrs) :: out_tag1

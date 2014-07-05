@@ -85,6 +85,32 @@ defmodule Rockside.Doc.Test do
       ~s[<div class="foo">something<div class="other">otherthing</div></div>])
   end
 
+  test "span tag" do
+    assert span() |> flush == "<span></span>"
+    assert span([class: "foo"], "bar") |> flush ==
+      ~s[<span class="foo">bar</span>]
+  end
+
+  test "p tag" do
+    assert p() |> flush == "<p></p>"
+    assert p("content") |> flush == "<p>content</p>"
+  end
+
+  test "a tag" do
+    assert a() |> flush == "<a></a>"
+    assert a([href: "link"], "desc") |> flush ==
+      ~s[<a href="link">desc</a>]
+  end
+
+  test "br tag" do
+    assert br() |> flush == "<br />"
+  end
+
+  test "img tag" do
+    assert img([src: "pic"]) |> flush ==
+      ~s[<img src="pic" />]
+  end
+
   test "grid fun" do
     assert( grid([container: 16], "foo") |> flush ==
       ~s[<div class="container_16">foo</div>] )
