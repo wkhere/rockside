@@ -10,23 +10,27 @@ defmodule Rockside.Doc do
   @spec tag(tagname, attrs, content)  :: outlist
   @spec tag(tagname)                  :: outlist
 
-  def tag(tag, attrs\\[], inner) do
-    if attrs == [] do
-      ["<#{tag}>", inner, "</#{tag}>"]
-    else
-      ["<#{tag} ", htmlize_attrs(attrs), ">", inner, "</#{tag}>"]
-    end
+  def tag(tag, attrs\\[], inner)
+
+  def tag(tag, [], inner) do
+    ["<#{tag}>", inner, "</#{tag}>"]
+  end
+  def tag(tag, attrs, inner) do
+    ["<#{tag} ", htmlize_attrs(attrs), ">", inner, "</#{tag}>"]
   end
 
   def tag(tag), do: tag(tag, [], [])
 
+
   @spec tag1(tagname, attrs) :: out_tag1
-  def tag1(tag, attrs\\[]) do
-    if attrs == [] do
-      "<#{tag} />"
-    else
+
+  def tag1(tag, attrs\\[])
+
+  def tag1(tag, []) do
+    "<#{tag} />"
+  end
+  def tag1(tag, attrs) do
       ["<#{tag} ", htmlize_attrs(attrs), " />"]
-    end
   end
 
 
