@@ -5,7 +5,7 @@ defmodule Rockside.Doc do
   @type attrs :: [{atom, String.t}]
   @type content :: String.t | list
   @type outlist  :: [any(), ...]
-  @type out_tag1 :: [[String.t] | String.t] | String.t
+  @type out_tag1 :: [[String.t] | String.t]
 
   @spec tag(tagname, attrs, content)  :: outlist
   @spec tag(tagname)                  :: outlist
@@ -27,20 +27,19 @@ defmodule Rockside.Doc do
   def tag1(tag, attrs\\[])
 
   def tag1(tag, []) do
-    "<#{tag} />"
+    ["<#{tag} />"]
   end
   def tag1(tag, attrs) do
       ["<#{tag} ", htmlize_attrs(attrs), " />"]
   end
 
 
-  @spec flush(outlist | String.t) :: String.t
+  @spec flush(outlist) :: String.t
 
   def flush(chunks) when is_list(chunks) do
     chunks |> List.flatten |> Enum.join
   end
-  def flush(chunk) when is_binary(chunk), do: chunk
-  # ^ needed only for plug-free tests, because patched Plug
+  # flush/1 needed only for plug-free tests, because patched Plug
   # accepts iolist as a resp body
 
 
