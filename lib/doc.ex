@@ -1,4 +1,5 @@
 defmodule Rockside.Doc do
+  import Kernel, except: [div: 2]
 
   @type tagname  :: atom
   @type attrs :: [{atom, String.t}]
@@ -58,6 +59,24 @@ defmodule Rockside.Doc do
 
   @spec css(String.t) :: out_tag1
   def css(path), do: link([rel: "stylesheet", type: "text/css", href: path])
+
+  @spec grid(list, content) :: outlist
+  def grid(args, body) when is_list(args) do
+    args = args |> Enum.map(fn
+        {:container, v} -> {:class, "container_#{v}"}
+        {:prefix, v}    -> {:class, "prefix_#{v}"}
+        {:suffix, v}    -> {:class, "suffix_#{v}"}
+        {:wide, v}      -> {:class, "grid_#{v}"}
+        x when x in [:clear,:alpha,:omega] -> {:class, x}
+        {k,v}           -> {k,v}
+      end)
+    joint_class = (for {:class,c} <- args, do: c) |> Enum.join(" ")
+    unless joint_class == "" do
+      args = args |> Enum.reject(fn {k,_} -> k == :class end)
+        |> Keyword.put(:class, joint_class)
+    end
+    div(args, body)
+  end
 
 
   @spec htmlize_attrs(attrs) :: [String.t]

@@ -71,6 +71,20 @@ defmodule Rockside.Doc.Test do
       ~s[<div class="foo">something<div class="other">otherthing</div></div>])
   end
 
+  test "grid fun" do
+    assert( grid([container: 16], "foo") |> flush ==
+      ~s[<div class="container_16">foo</div>] )
+    assert( grid([container: 16, id: 1], "foo") |> flush ==
+      ~s[<div class="container_16" id="1">foo</div>] )
+    assert( grid([:alpha], "foo") |> flush ==
+      ~s[<div class="alpha">foo</div>] )
+    assert( grid([:alpha, prefix: 2, wide: 3, suffix: 1], "foo") |> flush ==
+      ~s[<div class="alpha prefix_2 grid_3 suffix_1">foo</div>] )
+    assert( grid([:omega, wide: 4], "foo") |> flush ==
+      ~s[<div class="omega grid_4">foo</div>] )
+    assert( grid([class: "aux", wide: 4], "foo") |> flush ==
+      ~s[<div class="aux grid_4">foo</div>] )
+  end
 end
 
 defmodule Rockside.Plug.Sanity.Test do
