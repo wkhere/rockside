@@ -1,5 +1,10 @@
 defmodule Rockside.Doc do
   import Kernel, except: [div: 2]
+  defmacro __using__(_opts) do
+    quote do
+      import Kernel, except: [div: 2]
+    end
+  end
 
   @type tagname  :: atom
   @type attrs    :: [{atom, String.t}]

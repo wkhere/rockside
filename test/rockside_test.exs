@@ -1,7 +1,7 @@
 defmodule Rockside.Doc.Test do
   use ExUnit.Case
-  import Kernel, except: [div: 2]
   import Rockside.Doc
+  use Rockside.Doc
 
   test "content nested between tags" do
     assert body("foo") |> flush  == "<body>foo</body>"
