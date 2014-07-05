@@ -55,6 +55,9 @@ defmodule Rockside.Doc do
       def unquote(sym)(attrs\\[]), do: tag1(unquote(sym), attrs)
     end
 
+  def css(path), do: link([rel: "stylesheet", type: "text/css", href: path])
+
+
   @spec htmlize_attrs(attrs) :: [String.t]
   defp htmlize_attrs(attrs) do
     Enum.map(attrs, fn {k,v} ->

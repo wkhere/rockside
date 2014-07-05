@@ -48,6 +48,11 @@ defmodule Rockside.Doc.Test do
     assert link([foo: "bar"]) |> flush == ~s[<link foo="bar" />]
   end
 
+  test "css fun" do
+    assert css("/a/w/e/some.css") |> flush ==
+      ~s[<link rel="stylesheet" type="text/css" href="/a/w/e/some.css" />]
+  end
+
 end
 
 defmodule Rockside.Plug.Sanity.Test do
