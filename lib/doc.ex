@@ -29,7 +29,9 @@ defmodule Rockside.Doc do
     end
   end
 
+
   @spec flush(outlist | String.t) :: String.t
+
   def flush(chunks) when is_list(chunks) do
     chunks |> List.flatten |> Enum.join
   end
@@ -37,10 +39,13 @@ defmodule Rockside.Doc do
   # ^ needed only for plug-free tests, because patched Plug
   # accepts iolist as a resp body
 
+
   @spec html(attrs, list) :: outlist
+
   def html(attrs\\[], inner) do
     [ "<!DOCTYPE html>" | tag(:html, attrs, inner) ]
   end
+
 
   ~w[head title body div]
     |> Enum.each fn name ->
@@ -50,6 +55,7 @@ defmodule Rockside.Doc do
       def unquote(sym)(attrs\\[], inner), do: tag(unquote(sym), attrs, inner)
       def unquote(sym)(), do: tag(unquote(sym))
     end
+
   ~w[meta link]
     |> Enum.each fn name ->
       sym = :"#{name}"
@@ -57,10 +63,14 @@ defmodule Rockside.Doc do
       def unquote(sym)(attrs\\[]), do: tag1(unquote(sym), attrs)
     end
 
+
   @spec css(String.t) :: out_tag1
+
   def css(path), do: link([rel: "stylesheet", type: "text/css", href: path])
 
+
   @spec grid(list, content) :: outlist
+
   def grid(args, body) when is_list(args) do
     args = args |> Enum.map(fn
         {:container, v} -> {:class, "container_#{v}"}
@@ -80,6 +90,7 @@ defmodule Rockside.Doc do
 
 
   @spec htmlize_attrs(attrs) :: [String.t]
+
   defp htmlize_attrs(attrs) do
     Enum.map(attrs, fn {k,v} ->
       k = k |> to_string |> String.replace("_", "-")
