@@ -56,6 +56,7 @@ defmodule Rockside.Doc do
       def unquote(sym)(attrs\\[]), do: tag1(unquote(sym), attrs)
     end
 
+  @spec css(String.t) :: out_tag1
   def css(path), do: link([rel: "stylesheet", type: "text/css", href: path])
 
 
