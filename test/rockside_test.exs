@@ -63,6 +63,8 @@ defmodule Rockside.Doc.Test do
   end
 
   test "script fun" do
+    assert script(src: "foo.js") |> flush ==
+      ~s[<script type="text/javascript" src="foo.js"></script>]
     assert script("$('#main')") |> flush ==
       ~s[<script type="text/javascript">$('#main')</script>]
   end

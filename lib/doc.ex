@@ -79,8 +79,12 @@ defmodule Rockside.Doc do
 
   @spec script(String.t) :: out_tag
 
-  def script(text), do: tag(:script, [type: "text/javascript"], text)
-
+  def script(src: link) do
+    tag(:script, [type: "text/javascript", src: link], [])
+  end
+  def script(text) do
+    tag(:script, [type: "text/javascript"], text)
+  end
 
   @spec grid(list, content) :: out_tag
 
