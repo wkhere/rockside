@@ -10,5 +10,5 @@ while true; do
     echo -n "Run mix on `date +%H:%M:%S`.. "; $SHELL -c 'time mix compile'
     if [ $? -eq 0 ]; then echo -n "Running tests "; mix test; fi
     which ctags >/dev/null && ctags -R $ctags_dirs &
-    inotifywait -q -e modify lib/*.ex *.exs test/*.exs
+    find lib test *.exs -type f -name '*.ex*' | xargs inotifywait -q -e modify
 done
