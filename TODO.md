@@ -10,6 +10,7 @@
   - [ ] make forever optionally silent
   - [ ] upgrade my reloader fork, or
   - [ ] rethink reloader stuff
+- [ ] Fix runner
 - [ ] Start making useful elements
   - [x] More tags/funs: div span p a br img css grid script
   - [ ] minimal jquery example

@@ -1,3 +1,4 @@
+echo "I don't know how to make this runner exit on Elixir error..."; exit 42
 n=$1; [ -z "$n" ] && n=rockside
 exec elixir --sname $n -S mix run --no-halt --eval \
     'Rockside.run(Rockside.Sanity)'
