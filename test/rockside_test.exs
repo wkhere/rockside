@@ -62,6 +62,11 @@ defmodule Rockside.Doc.Test do
       ~s[<link rel="stylesheet" type="text/css" href="/a/w/e/some.css" />]
   end
 
+  test "script fun" do
+    assert script("$('#main')") |> flush ==
+      ~s[<script type="text/javascript">$('#main')</script>]
+  end
+
   test "title tag" do
     assert title() |> flush == "<title></title>"
     assert title("foo") |> flush == "<title>foo</title>"

@@ -77,6 +77,11 @@ defmodule Rockside.Doc do
   def css(path), do: link([rel: "stylesheet", type: "text/css", href: path])
 
 
+  @spec script(String.t) :: out_tag
+
+  def script(text), do: tag(:script, [type: "text/javascript"], text)
+
+
   @spec grid(list, content) :: out_tag
 
   def grid(args, body) when is_list(args) do
