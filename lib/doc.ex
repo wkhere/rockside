@@ -77,7 +77,7 @@ defmodule Rockside.Doc do
   def css(path), do: link([rel: "stylesheet", type: "text/css", href: path])
 
 
-  @spec script(String.t) :: out_tag
+  @spec script(attrs | String.t) :: out_tag
 
   def script(src: link) do
     tag(:script, [type: "text/javascript", src: link], [])
