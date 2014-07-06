@@ -11,9 +11,10 @@
   - [ ] upgrade my reloader fork, or
   - [ ] rethink reloader stuff
 - [ ] Start making useful elements
-  - [x] More tags/funs: div span p a br img css grid 
+  - [x] More tags/funs: div span p a br img css grid script
   - [ ] minimal jquery example
     - [ ] serve css & jquery files
   - [ ] then think of syntax
   - [ ] then think of macro-ization
+  - [ ] think of modules for separate devel. of components
   - [ ] ...
