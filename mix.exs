@@ -4,7 +4,7 @@ defmodule Rockside.Mixfile do
   def project do
     [ app: :rockside,
       version: "0.0.2",
-      elixir: "~> 0.14.0",
+      elixir: "~> 0.14.2",
       deps: deps(Mix.env),
       test_coverage: [tool: ExCoveralls]
     ]
