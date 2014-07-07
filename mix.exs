@@ -29,7 +29,7 @@ defmodule Rockside.Mixfile do
   end
 
   defp deps(:test) do
-    [{:excoveralls, "~> 0.2.2", github: "parroty/excoveralls", tag: "v0.2.2"}
+    [{:excoveralls, "~> 0.2.3", github: "parroty/excoveralls", tag: "v0.2.3"}
      | deps :prod]
   end
 
