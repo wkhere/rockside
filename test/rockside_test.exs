@@ -1,7 +1,11 @@
 defmodule Rockside.Doc.Test do
   use ExUnit.Case
-  import Rockside.Doc
+  import Rockside.Doc, except: [flush: 1]
   use Rockside.Doc
+
+  def flush(doc) do
+    doc |> Rockside.Doc.flush |> String.replace("\n", "")
+  end
 
   test "content nested between tags" do
     assert body("foo") |> flush  == "<body>foo</body>"
@@ -146,7 +150,7 @@ defmodule Rockside.Plug.Sanity.Test do
     assert conn.status == 200
     [type] = conn |> get_resp_header("content-type")
     assert type == "text/html; charset=utf-8"
-    assert conn.resp_body == 
+    assert conn.resp_body |> String.replace("\n", "") ==
       ~s[<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html" /><title>foo</title></head><body>foo</body></html>]
   end
 end

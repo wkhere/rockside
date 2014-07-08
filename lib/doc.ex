@@ -18,10 +18,10 @@ defmodule Rockside.Doc do
   def tag(tag, attrs\\[], inner)
 
   def tag(tag, [], inner) do
-    ["<#{tag}>", inner, "</#{tag}>"]
+    ["\n<#{tag}>", inner, "</#{tag}>"]
   end
   def tag(tag, attrs, inner) do
-    ["<#{tag} ", htmlize_attrs(attrs), ">", inner, "</#{tag}>"]
+    ["\n<#{tag} ", htmlize_attrs(attrs), ">", inner, "</#{tag}>"]
   end
 
   def tag(tag), do: tag(tag, [], [])
@@ -35,7 +35,7 @@ defmodule Rockside.Doc do
     ["<#{tag} />"]
   end
   def tag1(tag, attrs) do
-      ["<#{tag} ", htmlize_attrs(attrs), " />"]
+      ["\n<#{tag} ", htmlize_attrs(attrs), " />"]
   end
 
 
