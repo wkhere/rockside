@@ -100,8 +100,8 @@ defmodule Rockside.Doc do
     {class_args, rest_args} = args |> Enum.partition(fn {k,_} ->
       k == :class
     end)
-    joint_class = class_args |> Enum.map_join(" ", fn {_,v}-> v end)
-    unless joint_class == "" do
+    unless class_args == [] do
+      joint_class = class_args |> Enum.map_join(" ", fn {_,v}-> v end)
       args = rest_args |> Keyword.put(:class, joint_class)
     end
     div(args, body)
