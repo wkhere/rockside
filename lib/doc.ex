@@ -97,10 +97,12 @@ defmodule Rockside.Doc do
         x when x in [:clear,:alpha,:omega] -> {:class, x}
         {k,v}           -> {k,v}
       end)
-    joint_class = (for {:class,c} <- args, do: c) |> Enum.join(" ")
+    {class_args, rest_args} = args |> Enum.partition(fn {k,_} ->
+      k == :class
+    end)
+    joint_class = class_args |> Enum.map_join(" ", fn {_,v}-> v end)
     unless joint_class == "" do
-      args = args |> Enum.reject(fn {k,_} -> k == :class end)
-        |> Keyword.put(:class, joint_class)
+      args = rest_args |> Keyword.put(:class, joint_class)
     end
     div(args, body)
   end
