@@ -135,6 +135,14 @@ defmodule Rockside.Doc.Test do
       ~s[<div class="omega grid_4">foo</div>] )
     assert( grid([class: "aux", wide: 4], "foo") |> flush ==
       ~s[<div class="aux grid_4">foo</div>] )
+    assert( grid([class: "aux", wide: 4, style: "quux"], "foo") |> flush ==
+      ~s[<div class="aux grid_4" style="quux">foo</div>] )
+    assert( grid([style: "quux", class: "aux", wide: 4], "foo") |> flush ==
+      ~s[<div class="aux grid_4" style="quux">foo</div>] )
+    assert( grid([class: "aux", style: "quux", wide: 4], "foo") |> flush ==
+      ~s[<div class="aux grid_4" style="quux">foo</div>] )
+    assert( grid([style: "quux"], "foo") |> flush ==
+      ~s[<div style="quux">foo</div>] )
   end
 end
 
