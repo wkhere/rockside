@@ -28,13 +28,23 @@ defmodule Rockside.Doc.Test do
   end
 
   test "generic tag attributes" do
-    assert tag(:foo, [class: "bar"], nil) |> flush ==
+    assert tag(:foo, [class: "bar"], []) |> flush ==
       ~s[<foo class="bar"></foo>]
+    # make sure the order is preserved:
+    assert tag(:foo, [class: "bar", other: "quux"], []) |> flush ==
+      ~s[<foo class="bar" other="quux"></foo>]
+    assert tag(:foo, [other: "quux", class: "bar"], []) |> flush ==
+      ~s[<foo other="quux" class="bar"></foo>]
   end
 
   test "generic tag attributes plus content" do
     assert tag(:foo, [class: "bar"], "quux") |> flush ==
       ~s[<foo class="bar">quux</foo>]
+    # make sure the order is preserved:
+    assert tag(:foo, [class: "bar", other: "quux"], "hello") |> flush ==
+      ~s[<foo class="bar" other="quux">hello</foo>]
+    assert tag(:foo, [other: "quux", class: "bar"], "hello") |> flush ==
+      ~s[<foo other="quux" class="bar">hello</foo>]
   end
 
   test "generic tag1 without attributes" do
@@ -43,6 +53,11 @@ defmodule Rockside.Doc.Test do
 
   test "generic tag1 with attributes" do
     assert tag1(:foo, [class: "bar"]) |> flush == ~s[<foo class="bar" />]
+    # make sure the order is preserved:
+    assert tag1(:foo, [class: "bar", other: "quux"]) |> flush ==
+      ~s[<foo class="bar" other="quux" />]
+    assert tag1(:foo, [other: "quux", class: "bar"]) |> flush ==
+      ~s[<foo other="quux" class="bar" />]
   end
 
   test "html tag attributes" do
@@ -135,14 +150,38 @@ defmodule Rockside.Doc.Test do
       ~s[<div class="omega grid_4">foo</div>] )
     assert( grid([class: "aux", wide: 4], "foo") |> flush ==
       ~s[<div class="aux grid_4">foo</div>] )
+    assert( grid([style: "quux"], "foo") |> flush ==
+      ~s[<div style="quux">foo</div>] )
+
+    # Class goes first in output, but the order of non-class
+    # (this includes non-grid) attrs is preserved.
+    # Also the order of class/grid values in the resulting class
+    # should be preserved. Here are the checks:
+
+    # resulting class attr goes first:
     assert( grid([class: "aux", wide: 4, style: "quux"], "foo") |> flush ==
       ~s[<div class="aux grid_4" style="quux">foo</div>] )
     assert( grid([style: "quux", class: "aux", wide: 4], "foo") |> flush ==
       ~s[<div class="aux grid_4" style="quux">foo</div>] )
     assert( grid([class: "aux", style: "quux", wide: 4], "foo") |> flush ==
       ~s[<div class="aux grid_4" style="quux">foo</div>] )
-    assert( grid([style: "quux"], "foo") |> flush ==
-      ~s[<div style="quux">foo</div>] )
+    # non-class attrs order:
+    assert( grid([a: "quux", b: "bar"], "foo") |> flush ==
+      ~s[<div a="quux" b="bar">foo</div>] )
+    assert( grid([b: "quux", a: "bar"], "foo") |> flush ==
+      ~s[<div b="quux" a="bar">foo</div>] )
+    # non-class attrs mixed with class/grid:
+    assert( grid([a: "quux", class: "aux", b: "bar", wide: 1], "foo") |> flush ==
+      ~s[<div class="aux grid_1" a="quux" b="bar">foo</div>] )
+    assert( grid([b: "quux", class: "aux", a: "bar", wide: 1], "foo") |> flush ==
+      ~s[<div class="aux grid_1" b="quux" a="bar">foo</div>] )
+    # order of class/grid values is preserved:
+    assert( grid([wide: 4, class: "aux"], "foo") |> flush ==
+      ~s[<div class="grid_4 aux">foo</div>] )
+    assert( grid([wide: 4, class: "aux", style: "quux"], "foo") |> flush ==
+      ~s[<div class="grid_4 aux" style="quux">foo</div>] )
+    assert( grid([b: "quux", wide: 1, a: "bar", class: "aux"], "foo") |> flush ==
+      ~s[<div class="grid_1 aux" b="quux" a="bar">foo</div>] )
   end
 end
 
