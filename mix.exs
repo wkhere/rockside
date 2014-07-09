@@ -5,7 +5,7 @@ defmodule Rockside.Mixfile do
     [ app: :rockside,
       version: "0.0.2",
       elixir: "~> 0.14.2",
-      deps: deps(Mix.env),
+      deps: deps,
       test_coverage: [tool: ExCoveralls]
     ]
   end
@@ -22,22 +22,10 @@ defmodule Rockside.Mixfile do
   #
   # To specify particular versions, regardless of the tag, do:
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
-  defp deps(:prod) do
+  defp deps do
     [ {:cowboy, github: "extend/cowboy"},
       {:plug, "== 0.5.1", github: "elixir-lang/plug", tag: "v0.5.1"},
+      {:excoveralls, github: "parroty/excoveralls", tag: "v0.2.3", only: :test}
     ]
   end
-
-  defp deps(:test) do
-    [{:excoveralls, "~> 0.2.3", github: "parroty/excoveralls", tag: "v0.2.3"}
-     | deps :prod]
-  end
-
-  # my reloader has deps not working in 0.13
-  #defp deps(:dev) do
-  #  [ {:exreloader, github: "herenowcoder/exreloader"}
-  #    | deps :prod ]
-  #end
-
-  defp deps(_), do: deps :prod
 end
