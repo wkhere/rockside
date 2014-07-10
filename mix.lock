@@ -5,6 +5,6 @@
   "exreloader": {:git, "git://github.com/herenowcoder/exreloader.git", "02e215628da172e4ae7a43d016579794322505d7", []},
   "jsex": {:package, "2.0.0"},
   "jsx": {:package, "2.0.4"},
-  "plug": {:git, "git://github.com/elixir-lang/plug.git", "d5737b543ffa48b40dcb7422ef31a03b62b82aee", [tag: "v0.5.1"]},
+  "plug": {:package, "0.5.1"},
   "ranch": {:git, "git://github.com/extend/ranch.git", "3189ef2d47843945efc96c224963380462c33d40", [ref: "0.10.0"]},
   "reprise": {:git, "git://github.com/herenowcoder/reprise.git", "e452c9838cfcbcc8eeda421548fb32dd10f3760f", [tag: "v0.1.0"]}}
