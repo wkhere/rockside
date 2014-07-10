@@ -13,7 +13,7 @@ defmodule Rockside.Mixfile do
   # Configuration for the OTP application
   def application do
     dep_apps = [:cowboy, :plug]
-    #if Mix.env == :dev, do: dep_apps = [:exreloader | dep_apps]
+    if Mix.env == :dev, do: dep_apps = [:reprise | dep_apps]
     [ applications: dep_apps ]
   end
 
@@ -25,7 +25,8 @@ defmodule Rockside.Mixfile do
   defp deps do
     [ {:cowboy, github: "extend/cowboy"},
       {:plug, "== 0.5.1", github: "elixir-lang/plug", tag: "v0.5.1"},
-      {:excoveralls, github: "parroty/excoveralls", tag: "v0.2.3", only: :test}
+      {:excoveralls, github: "parroty/excoveralls", tag: "v0.2.3", only: :test},
+      {:reprise, github: "herenowcoder/reprise", tag: "v0.1.0", only: :dev},
     ]
   end
 end

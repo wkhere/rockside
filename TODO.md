@@ -8,8 +8,7 @@
   - [x] More strict Doc types
 - [ ] Clean up forever / reloader
   - [ ] make forever optionally silent
-  - [ ] upgrade my reloader fork, or
-  - [ ] rethink reloader stuff
+  - [x] rethink reloader stuff -> reimplemented as [Reprise]
 - [ ] Fix runner
 - [ ] Start making useful elements
   - [x] More tags/funs: div span p a br img css grid script
@@ -19,3 +18,5 @@
   - [ ] then think of macro-ization
   - [ ] think of modules for separate devel. of components
   - [ ] ...
+
+[Reprise]: http://github.com/herenowcoder/reprise
