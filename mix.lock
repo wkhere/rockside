@@ -7,4 +7,4 @@
   "jsx": {:package, "2.0.4"},
   "plug": {:package, "0.5.1"},
   "ranch": {:git, "git://github.com/extend/ranch.git", "3189ef2d47843945efc96c224963380462c33d40", [ref: "0.10.0"]},
-  "reprise": {:git, "git://github.com/herenowcoder/reprise.git", "e452c9838cfcbcc8eeda421548fb32dd10f3760f", [tag: "v0.1.0"]}}
+  "reprise": {:package, "0.1.1"}}
