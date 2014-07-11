@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [ -z "$Elixir_src" ]; then
     ctags_dirs=.
 else
