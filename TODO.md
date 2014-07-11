@@ -1,5 +1,6 @@
 - [x] Upgrade to 0.13.x
 - [x] Upgrade to 0.14.x
+- [ ] Upgrade excoveralls to newer hex pkg when it is usable
 - [x] travis |> coveralls
 - [x] Test with Plug.Test
 - [x] More coverage for tag/tag1 stuff
