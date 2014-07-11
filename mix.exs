@@ -14,7 +14,8 @@ defmodule Rockside.Mixfile do
   def application do
     dep_apps = [:cowboy, :plug]
     if Mix.env == :dev, do: dep_apps = [:reprise | dep_apps]
-    [ applications: dep_apps ]
+    [ description: 'Controllerless web architecture',
+      applications: dep_apps ]
   end
 
   # Returns the list of dependencies in the format:
