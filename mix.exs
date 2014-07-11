@@ -26,7 +26,7 @@ defmodule Rockside.Mixfile do
     [ {:cowboy, github: "extend/cowboy"},
       {:plug, "== 0.5.1"},
       {:excoveralls, github: "parroty/excoveralls", tag: "v0.2.3", only: :test},
-      {:reprise, "== 0.1.1", only: :dev},
+      {:reprise, "== 0.1.3", only: :dev},
     ]
   end
 end
