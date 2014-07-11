@@ -8,6 +8,7 @@
   - [x] More strict Doc types
 - [ ] Clean up forever / reloader
   - [ ] make forever optionally silent
+  - [ ] forever for OSX
   - [x] rethink reloader stuff -> reimplemented as [Reprise]
 - [ ] Fix runner
 - [ ] Start making useful elements
