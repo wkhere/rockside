@@ -11,13 +11,17 @@
   - [ ] forever for OSX
   - [x] rethink reloader stuff -> reimplemented as [Reprise]
 - [ ] Fix runner
+- [ ] Make it supervised app with one example website
 - [ ] Start making useful elements
   - [x] More tags/funs: div span p a br img css grid script
   - [ ] minimal jquery example
     - [ ] serve css & jquery files
-  - [ ] then think of syntax
-  - [ ] then think of macro-ization
-  - [ ] think of modules for separate devel. of components
-  - [ ] ...
+  - [ ] use web bootstrap
+  - [ ] allow use of 960gs as it is
+  - [ ] rethink representation eof elements
+  - [ ] split code into html asm, static file serving & elements
+  - [ ] rethink of syntax
+  - [ ] rethink of macro-ization
+- [ ] ...
 
 [Reprise]: http://github.com/herenowcoder/reprise
