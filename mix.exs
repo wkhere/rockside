@@ -26,7 +26,7 @@ defmodule Rockside.Mixfile do
   defp deps do
     [ {:cowboy, github: "extend/cowboy"},
       {:plug, "== 0.5.1"},
-      {:excoveralls, "== 0.2.2", only: :test},
+      {:excoveralls, "== 0.2.4", only: :test},
       {:reprise, "== 0.1.3", only: :dev},
     ]
   end
