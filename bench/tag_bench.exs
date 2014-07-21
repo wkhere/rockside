@@ -3,9 +3,9 @@ defmodule BenchHelper do
   def rand(coll) when is_list(coll), do: coll |> Enum.shuffle |> hd
 end
 
-defmodule Rockside.TagBench do
+defmodule Rockside.HTML.Elements.Bench do
   use Benchfella
-  import Rockside.Doc
+  import Rockside.HTML.Elements
   import BenchHelper
 
   @grid_attrs \

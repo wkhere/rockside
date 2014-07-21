@@ -1,6 +1,6 @@
 defmodule Rockside.Sanity do
   import Plug.Conn
-  import Rockside.Doc
+  import Rockside.HTML.Elements
 
   def init(opts), do: opts
 

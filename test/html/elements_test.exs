@@ -1,65 +1,14 @@
-defmodule Rockside.Doc.Test do
+defmodule Rockside.HTML.Elements.Test do
   use ExUnit.Case
-  import Rockside.Doc, except: [flush: 1]
-  use Rockside.Doc
+  import Rockside.HTML.Elements
+  use Rockside.HTML.Elements # hack for shadowing div
+  import Rockside.HTML.TestHelper
 
-  def flush(doc) do
-    doc |> Rockside.Doc.flush |> String.replace("\n", "")
-  end
-
-  test "content nested between tags" do
-    assert body("foo") |> flush  == "<body>foo</body>"
-  end
-
-  test "nested tags" do
-    assert html(body) |> flush =~ "<html><body></body></html>"
-  end
 
   test "html has doctype" do
     assert html([]) |> flush =~ "<!DOCTYPE html>"
   end
-
-  test "generic tag without attributes or content" do
-    assert tag(:foo) |> flush == ~s[<foo></foo>]
-  end
-
-  test "generic tag without attributes" do
-    assert tag(:foo, "content") |> flush == ~s[<foo>content</foo>]
-  end
-
-  test "generic tag attributes" do
-    assert tag(:foo, [class: "bar"], []) |> flush ==
-      ~s[<foo class="bar"></foo>]
-    # make sure the order is preserved:
-    assert tag(:foo, [class: "bar", other: "quux"], []) |> flush ==
-      ~s[<foo class="bar" other="quux"></foo>]
-    assert tag(:foo, [other: "quux", class: "bar"], []) |> flush ==
-      ~s[<foo other="quux" class="bar"></foo>]
-  end
-
-  test "generic tag attributes plus content" do
-    assert tag(:foo, [class: "bar"], "quux") |> flush ==
-      ~s[<foo class="bar">quux</foo>]
-    # make sure the order is preserved:
-    assert tag(:foo, [class: "bar", other: "quux"], "hello") |> flush ==
-      ~s[<foo class="bar" other="quux">hello</foo>]
-    assert tag(:foo, [other: "quux", class: "bar"], "hello") |> flush ==
-      ~s[<foo other="quux" class="bar">hello</foo>]
-  end
-
-  test "generic tag1 without attributes" do
-    assert tag1(:foo) |> flush == ~s[<foo />]
-  end
-
-  test "generic tag1 with attributes" do
-    assert tag1(:foo, [class: "bar"]) |> flush == ~s[<foo class="bar" />]
-    # make sure the order is preserved:
-    assert tag1(:foo, [class: "bar", other: "quux"]) |> flush ==
-      ~s[<foo class="bar" other="quux" />]
-    assert tag1(:foo, [other: "quux", class: "bar"]) |> flush ==
-      ~s[<foo other="quux" class="bar" />]
-  end
-
+ 
   test "html tag attributes" do
     assert html([foo: "bar"], nil) |> flush =~
       ~s[<html foo="bar"></html>]
@@ -76,12 +25,12 @@ defmodule Rockside.Doc.Test do
     assert link([foo: "bar"]) |> flush == ~s[<link foo="bar" />]
   end
 
-  test "css fun" do
+  test "css" do
     assert css("/a/w/e/some.css") |> flush ==
       ~s[<link rel="stylesheet" type="text/css" href="/a/w/e/some.css" />]
   end
 
-  test "script fun" do
+  test "script" do
     assert script(src: "foo.js") |> flush ==
       ~s[<script type="text/javascript" src="foo.js"></script>]
     assert script("$('#main')") |> flush ==
@@ -137,7 +86,7 @@ defmodule Rockside.Doc.Test do
       ~s[<img src="pic" />]
   end
 
-  test "grid fun" do
+  test "grid" do
     assert( grid([container: 16], "foo") |> flush ==
       ~s[<div class="container_16">foo</div>] )
     assert( grid([container: 16, id: 1], "foo") |> flush ==
@@ -184,21 +133,3 @@ defmodule Rockside.Doc.Test do
       ~s[<div class="grid_1 aux" b="quux" a="bar">foo</div>] )
   end
 end
-
-defmodule Rockside.Plug.Sanity.Test do
-  use ExUnit.Case
-  use Plug.Test
-  import Rockside.Sanity
-  @opts init([])
-
-  test "sanity response" do
-    conn = conn(:get, "/") |> call @opts
-    assert conn.state == :sent
-    assert conn.status == 200
-    [type] = conn |> get_resp_header("content-type")
-    assert type == "text/html; charset=utf-8"
-    assert conn.resp_body |> String.replace("\n", "") ==
-      ~s[<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html" /><title>foo</title></head><body>foo</body></html>]
-  end
-end
-
