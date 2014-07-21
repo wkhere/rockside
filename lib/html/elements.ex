@@ -1,5 +1,6 @@
 defmodule Rockside.HTML.Elements do
   import Rockside.HTML.TagBase
+  alias TagBase, as: T # for typespecs
   import Kernel, except: [div: 2]
   defmacro __using__(_opts) do
     quote do
@@ -7,14 +8,8 @@ defmodule Rockside.HTML.Elements do
     end
   end
 
-  @type attrs    :: TagBase.attrs
-  @type content  :: TagBase.content
-  @type out_tag  :: TagBase.out_tag
-  @type out_tag1 :: TagBase.out_tag1
-  # is it a bug in Elixir that above is needed?
 
-
-  @spec html(attrs, list) :: out_tag
+  @spec html(T.attrs, list) :: T.out_tag
 
   def html(attrs\\[], inner) do
     [ "<!DOCTYPE html>" | tag(:html, attrs, inner) ]
@@ -24,8 +19,8 @@ defmodule Rockside.HTML.Elements do
   ~w[head title body div span p a]
     |> Enum.each fn name ->
       sym = :"#{name}"
-      @spec unquote(sym)(attrs, content) :: out_tag
-      @spec unquote(sym)() :: out_tag
+      @spec unquote(sym)(T.attrs, T.content) :: T.out_tag
+      @spec unquote(sym)() :: T.out_tag
       def unquote(sym)(attrs\\[], inner), do: tag(unquote(sym), attrs, inner)
       def unquote(sym)(), do: tag(unquote(sym))
     end
@@ -33,17 +28,17 @@ defmodule Rockside.HTML.Elements do
   ~w[meta link br img]
     |> Enum.each fn name ->
       sym = :"#{name}"
-      @spec unquote(sym)(attrs) :: out_tag1
+      @spec unquote(sym)(T.attrs) :: T.out_tag1
       def unquote(sym)(attrs\\[]), do: tag1(unquote(sym), attrs)
     end
 
 
-  @spec css(String.t) :: out_tag1
+  @spec css(String.t) :: T.out_tag1
 
   def css(path), do: link([rel: "stylesheet", type: "text/css", href: path])
 
 
-  @spec script(attrs | String.t) :: out_tag
+  @spec script(T.attrs | String.t) :: T.out_tag
 
   def script(src: link) do
     tag(:script, [type: "text/javascript", src: link], [])
@@ -52,7 +47,7 @@ defmodule Rockside.HTML.Elements do
     tag(:script, [type: "text/javascript"], text)
   end
 
-  @spec grid(list, content) :: out_tag
+  @spec grid(list, T.content) :: T.out_tag
 
   def grid(args, body) when is_list(args) do
     args = args |> Enum.map(fn
