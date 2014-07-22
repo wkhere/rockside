@@ -1,7 +1,10 @@
-defmodule Rockside.HTML.TagBase.Test do
-  use ExUnit.Case
-  import Rockside.HTML.TagBase, except: [flush: 1]
-  import Rockside.HTML.TestHelper
+alias Rockside.HTML
+alias HTML.TagBase
+
+defmodule TagBase.Test do
+  use    ExUnit.Case
+  import HTML.TestHelper
+  import TagBase
 
   test "content nested between tags" do
     assert tag(:body, "foo") |> flush == "<body>foo</body>" 

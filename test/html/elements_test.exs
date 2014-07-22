@@ -1,9 +1,11 @@
-defmodule Rockside.HTML.Elements.Test do
-  use ExUnit.Case
-  import Rockside.HTML.Elements
-  use Rockside.HTML.Elements # hack for shadowing div
-  import Rockside.HTML.TestHelper
+alias Rockside.HTML
+alias HTML.Elements
 
+defmodule Elements.Test do
+  use    ExUnit.Case
+  import HTML.TestHelper
+  import Elements
+  use    Elements # hack for shadowing div
 
   test "html has doctype" do
     assert html([]) |> flush =~ "<!DOCTYPE html>"

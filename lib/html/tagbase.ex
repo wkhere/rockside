@@ -33,16 +33,7 @@ defmodule Rockside.HTML.TagBase do
   end
 
 
-  @spec flush(out_tag) :: String.t
-
-  def flush(chunks) when is_list(chunks) do
-    chunks |> List.flatten |> Enum.join
-  end
-  # flush/1 needed only for plug-free tests, because patched Plug
-  # accepts iolist as a resp body
-
-
-  @spec htmlize_attrs(attrs) :: [String.t]
+ @spec htmlize_attrs(attrs) :: [String.t]
 
   defp htmlize_attrs(attrs) do
     Enum.map(attrs, fn {k,v} ->
@@ -51,4 +42,17 @@ defmodule Rockside.HTML.TagBase do
     end)
       |> Enum.intersperse(" ")
   end
-end
+
+  defmodule Tools do
+    alias TagBase, as: T
+
+    @spec flush(T.out_tag) :: String.t
+
+    def flush(chunks) when is_list(chunks) do
+      chunks |> List.flatten |> Enum.join
+    end
+    # flush/1 needed only for plug-free tests, because patched Plug
+    # accepts iolist as a resp body
+  end
+
+ end
