@@ -58,8 +58,13 @@ defmodule Elements.Test do
         "something",
         div([class: "other"],
           "otherthing")
-      ]) |> flush ==
-      ~s[<div class="foo">something<div class="other">otherthing</div></div>])
+      ])
+      |> flush == """
+      <div class="foo">
+        something
+        <div class="other">otherthing</div>
+      </div>
+      """ |> no_indent |> no_lf)
   end
 
   test "span tag" do

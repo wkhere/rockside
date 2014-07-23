@@ -34,7 +34,10 @@ defmodule Assembly.Test do
       |> push(tag(:bar, "2"))
       |> release
       |> flush
-      == "<foo>1</foo><bar>2</bar>"
+      == """
+      <foo>1</foo>
+      <bar>2</bar>
+      """ |> no_indent |> no_lf
   end
 
   test "push two tags nested and a third sister to first" do
@@ -48,9 +51,11 @@ defmodule Assembly.Test do
       |> release
       |> flush
       == """
-      <foo><bar>inner</bar></foo>
+      <foo>
+        <bar>inner</bar>
+      </foo>
       <quux>sister</quux>
-      """ |> no_lf
+      """ |> no_indent |> no_lf
   end
 
   test "mix nesting and a list content" do
@@ -65,9 +70,12 @@ defmodule Assembly.Test do
       |> release
       |> flush
       === """
-      <foo>inner<bar>child</bar></foo>
+      <foo>
+        inner
+        <bar>child</bar>
+      </foo>
       <quux>sister</quux>
-      """ |> no_lf
+      """ |> no_indent |> no_lf
   end
 
   test "push two sister tags and then two nested in 2nd sis" do
@@ -83,11 +91,11 @@ defmodule Assembly.Test do
       |> flush
       == """
       <foo>sister</foo>
-      <bar>
-      <quux>inner</quux>
-      <cosmic>inner as well</cosmic>
+        <bar>
+        <quux>inner</quux>
+        <cosmic>inner as well</cosmic>
       </bar>
-      """ |> no_lf
+      """ |> no_indent |> no_lf
   end
 
 end
