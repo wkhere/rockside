@@ -1,27 +1,11 @@
 alias Rockside.HTML
 alias HTML.Assembly
 
-defmodule Assembly.Test do
+defmodule Assembly.UsingTagBase.Test do
   use    ExUnit.Case
   import HTML.TestHelper
   import HTML.TagBase
   import Assembly.St
-
-  test "new state has empty stack" do
-    assert new.stack == []
-  end
-
-  test "push anything" do
-    assert ( new |> push(1) ).stack == [1]
-  end
-
-  test "2x push anything" do
-    assert ( new |> push(1) |> push(2) ).stack == [2,1]
-  end
-
-  test "2x push anything + release" do
-    assert new |> push(1) |> push(2) |> release == [1,2]
-  end
 
   test "push one tag" do
     assert new |> push(tag(:foo, "bar")) |> release |> flush
