@@ -4,7 +4,7 @@ defmodule Rockside.Mixfile do
   def project do
     [ app: :rockside,
       version: "0.1.0-dev",
-      elixir: "~> 0.14.2",
+      elixir: "~> 0.14.3",
       deps: deps,
       test_coverage: [tool: ExCoveralls]
     ]
@@ -25,7 +25,7 @@ defmodule Rockside.Mixfile do
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   defp deps do
     [ {:cowboy, github: "extend/cowboy"},
-      {:plug, "== 0.5.1"},
+      {:plug, "== 0.5.2"},
       {:excoveralls, "~> 0.3.1", only: :test},
       {:reprise, "~> 0.2.1", only: :dev},
     ]
