@@ -1,7 +1,7 @@
 defmodule Rockside.HTML.Elements do
-  import Rockside.HTML.TagBase
-  alias TagBase, as: T # for typespecs
-  import Kernel, except: [div: 2]
+  import  Rockside.HTML.TagBase
+  require Rockside.HTML.Assembly.Types, as: T
+  import  Kernel, except: [div: 2]
   defmacro __using__(_opts) do
     quote do
       import Kernel, except: [div: 2]
