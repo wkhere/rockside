@@ -97,6 +97,18 @@ defmodule DSL.Test do
     assert buf |> flush == "<span>foo</span>"
   end
 
+  test "gather without proper pick raises clause error" do
+    assert_raise CaseClauseError, fn ->
+      builder do: (gather fn -> :foo end.())
+    end
+    assert_raise FunctionClauseError, fn ->
+      builder do: (gather for _<-1..1, do: :foo)
+    end
+    assert_raise FunctionClauseError, fn ->
+      builder do: (gather for _<-1..1, do: (pick nil; :foo))
+    end
+  end
+
   test "attrs" do
     buf = builder do
       span [class: "hilight"], "foo"
