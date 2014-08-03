@@ -5,4 +5,4 @@
   "jsx": {:package, "2.0.4"},
   "plug": {:package, "0.5.3"},
   "ranch": {:package, "1.0.0"},
-  "reprise": {:package, "0.2.2"}}
+  "reprise": {:package, "0.2.4"}}
