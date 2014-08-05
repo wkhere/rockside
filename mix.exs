@@ -27,7 +27,7 @@ defmodule Rockside.Mixfile do
     [ {:cowboy, "== 1.0.0"},
       {:plug, "== 0.5.3"},
       {:excoveralls, "~> 0.3.1", only: :test},
-      {:reprise, "~> 0.2.4", only: :dev},
+      {:reprise, "~> 0.2", only: :dev},
     ]
   end
 end
