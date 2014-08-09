@@ -128,4 +128,24 @@ defmodule DSL.Test do
       """
       |> no_indent |> no_lf
   end
+
+  test "attrs preceding a block dont need brackets" do
+    buf = builder do
+      div id: :diamond, class: "shiny" do
+        text "I was under pressure and now I shine"
+        span id: :spark do
+          text "inside"
+        end
+      end
+    end
+    assert buf |> flush == """
+      <div id="diamond" class="shiny">
+        I was under pressure and now I shine
+        <span id="spark">
+          inside
+        </span>
+      </div>
+      """
+      |> no_indent |> no_lf
+  end
 end
