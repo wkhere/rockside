@@ -1,6 +1,6 @@
 %{"cowboy": {:package, "1.0.0"},
   "cowlib": {:package, "1.0.0"},
-  "excoveralls": {:package, "0.3.1"},
+  "excoveralls": {:package, "0.3.2"},
   "jsex": {:package, "2.0.0"},
   "jsx": {:package, "2.0.4"},
   "plug": {:package, "0.5.3"},
