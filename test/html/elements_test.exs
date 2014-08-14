@@ -4,8 +4,7 @@ alias HTML.Elements
 defmodule Elements.Test do
   use    ExUnit.Case
   import HTML.TestHelper
-  import Elements
-  use    Elements # hack for shadowing div
+  use    Elements
 
   test "html has doctype" do
     assert html([]) |> flush =~ "<!DOCTYPE html>"

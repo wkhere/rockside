@@ -5,6 +5,7 @@ defmodule Rockside.HTML.Elements do
   defmacro __using__(_opts) do
     quote do
       import Kernel, except: [div: 2]
+      import Rockside.HTML.Elements
     end
   end
 
