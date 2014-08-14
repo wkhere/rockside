@@ -1,6 +1,7 @@
 defmodule Rockside.HTML.Elements do
   import  Rockside.HTML.TagBase
-  require Rockside.HTML.Assembly.Types, as: T
+  require WebAssembly.Types, as: T
+
   import  Kernel, except: [div: 2]
   defmacro __using__(_opts) do
     quote do

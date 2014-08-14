@@ -12,7 +12,7 @@ defmodule Rockside.Mixfile do
 
   # Configuration for the OTP application
   def application do
-    dep_apps = [:cowboy, :plug]
+    dep_apps = [:cowboy, :plug, :webassembly]
     if Mix.env == :dev, do: dep_apps = [:reprise | dep_apps]
     [ description: 'Controllerless web architecture',
       applications: dep_apps ]
@@ -26,6 +26,7 @@ defmodule Rockside.Mixfile do
   defp deps do
     [ {:cowboy, "== 1.0.0"},
       {:plug, "== 0.5.3"},
+      {:webassembly, "~> 0.1"},
       {:excoveralls, "~> 0.3.2", only: :test},
       {:reprise, "~> 0.2", only: :dev},
     ]

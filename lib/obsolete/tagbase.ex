@@ -2,8 +2,8 @@ alias Rockside.HTML
 
 defmodule HTML.TagBase do
 
-  alias HTML.Assembly.Types, as: T
-  import HTML.Assembly.Tools, only: [htmlize_attrs: 1]
+  alias  WebAssembly.Types, as: T
+  import WebAssembly.Tools, only: [htmlize_attrs: 1]
 
   @spec tag(T.tagname, T.attrs, T.content)  :: T.out_tag
   @spec tag(T.tagname)                      :: T.out_tag
