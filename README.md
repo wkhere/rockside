@@ -4,7 +4,9 @@
 
 This *will* be a controlerless web server architecture for [Elixir][1], 
 made esp. for single-page web apps, with some ideas inspired by /
-stolen from [Seaside][2], [Nitrogen][3] and [why's Markaby][4].
+stolen from [Seaside][2], [Nitrogen][3].
+
+It uses [WebAssembly] as a DSL allowing to intermix HTML & Elixir.
 
 Finally you will need this project as a library in your mix deps - 
 until this is done it is just a testbed for rapidly changing ideas.
@@ -12,4 +14,4 @@ until this is done it is just a testbed for rapidly changing ideas.
 [1]: http://elixir-lang.org
 [2]: http://seaside.st
 [3]: http://nitrogenproject.com
-[4]: http://github.com/markaby/markaby
+[webassembly]: https://github.com/herenowcoder/webassembly
