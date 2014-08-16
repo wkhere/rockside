@@ -10,3 +10,6 @@ done
 echo "Running Rockside with module $m" >&2
 exec elixir --sname $n -S mix run --no-halt --eval \
     "Rockside.run($m)"
+
+# instead of this script, rather make a runner via: mix server [opts]
+# see: http://git.io/7aHdIw
