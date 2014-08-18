@@ -26,7 +26,7 @@ defmodule Rockside.Mixfile do
   defp deps do
     [ {:cowboy, "== 1.0.0"},
       {:plug, "== 0.5.3"},
-      {:webassembly, "~> 0.3.0"},
+      {:webassembly, "~> 0.3.3"},
       {:excoveralls, "~> 0.3.2", only: :test},
       {:reprise, "~> 0.2", only: :dev},
     ]
