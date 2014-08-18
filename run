@@ -1,4 +1,5 @@
 #!/bin/bash
+[ -z "$MIX_ENV" ] && MIX_ENV=dev
 n='rockside'
 m='Rockside.Sanity'
 
@@ -8,7 +9,8 @@ while [ -n "$1" ]; do
     fi
 done
 echo "Running Rockside with module $m" >&2
-exec elixir --sname $n -S mix run --no-halt --eval \
+exec elixir --sname $n -pa _build/$MIX_ENV/consolidated \
+    -S mix run --no-halt --eval \
     "Rockside.run($m)"
 
 # instead of this script, rather make a runner via: mix server [opts]
