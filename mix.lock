@@ -5,5 +5,5 @@
   "jsx": {:package, "2.0.4"},
   "plug": {:package, "0.5.3"},
   "ranch": {:package, "1.0.0"},
-  "reprise": {:package, "0.2.6"},
+  "reprise": {:package, "0.2.7"},
   "webassembly": {:package, "0.3.3"}}
