@@ -2,16 +2,17 @@
 [![Build Status](https://travis-ci.org/herenowcoder/rockside.svg?branch=master)](https://travis-ci.org/herenowcoder/rockside)
 [![Coverage Status](https://img.shields.io/coveralls/herenowcoder/rockside.svg)](https://coveralls.io/r/herenowcoder/rockside?branch=master)
 
-This *will* be a controlerless web server architecture for [Elixir][1], 
+This *will* be a controlerless web server architecture for [Elixir], 
 made esp. for single-page web apps, with some ideas inspired by /
-stolen from [Seaside][2], [Nitrogen][3].
+stolen from [LiftWeb], [Seaside], [Nitrogen].
 
 It uses [WebAssembly] as a DSL allowing to intermix HTML & Elixir.
 
 Finally you will need this project as a library in your mix deps - 
 until this is done it is just a testbed for rapidly changing ideas.
 
-[1]: http://elixir-lang.org
-[2]: http://seaside.st
-[3]: http://nitrogenproject.com
+[exixir]:   http://elixir-lang.org
+[seaside]:  http://seaside.st
+[nitrogen]: http://nitrogenproject.com
+[liftweb]:  http://liftweb.net
 [webassembly]: https://github.com/herenowcoder/webassembly
