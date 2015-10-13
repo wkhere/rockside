@@ -6,7 +6,8 @@ This *will* be a controlerless web server architecture for [Elixir],
 made esp. for single-page web apps, with some ideas inspired by /
 stolen from [LiftWeb], [Seaside], [Nitrogen].
 
-It uses [WebAssembly] as a DSL allowing to intermix HTML & Elixir.
+It experimentally uses [WebAssembly] as a DSL allowing to intermix HTML & Elixir.
+This may change in the future.
 
 Finally you will need this project as a library in your mix deps - 
 until this is done it is just a testbed for rapidly changing ideas.
