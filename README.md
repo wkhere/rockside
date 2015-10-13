@@ -11,7 +11,7 @@ It uses [WebAssembly] as a DSL allowing to intermix HTML & Elixir.
 Finally you will need this project as a library in your mix deps - 
 until this is done it is just a testbed for rapidly changing ideas.
 
-[exixir]:   http://elixir-lang.org
+[elixir]:   http://elixir-lang.org
 [seaside]:  http://seaside.st
 [nitrogen]: http://nitrogenproject.com
 [liftweb]:  http://liftweb.net
